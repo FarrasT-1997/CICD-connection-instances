@@ -2,11 +2,11 @@
 
 CI/CD AWS
 
-1. Buat direktori .github/workflow atau menggunakan template dari github
+# 1. Buat direktori .github/workflow atau menggunakan template dari github
    - template github : pilih actions dan pilih salah satu workflow (contoh greetings)
   
-2. Path workflow git pull ke local
-3. Pada direktori .github/workflow buat file .yml lagi
+# 2. Path workflow git pull ke local
+# 3. Pada direktori .github/workflow buat file .yml lagi
 
 ```
 ===================CONTOH================
@@ -39,7 +39,7 @@ jobs:
           docker run -d -e "HTTP_PORT=:80" -p 80:80 --name myApp my-app:latest
 ```
 
-4. Sebelum push ke github, siapkan EC2, install docker, buat keygen EC2
+# 4. Sebelum push ke github, siapkan EC2, install docker, buat keygen EC2
 ```
 =============IN EC2===============
 
@@ -52,13 +52,13 @@ newgrp docker
 
 ssh-keygen
 ```
-5. Pada github, pilih settings (di samping insights) -> secrets. Masukkan HOST, USERNAME, KEY & PORT
+# 5. Pada github, pilih settings (di samping insights) -> secrets. Masukkan HOST, USERNAME, KEY & PORT
   - HOST : IP public EC2
   - USERNAME : ubuntu
   - KEY : copy key file .pem (tanpa "%")
   - PORT : 22
 
-6. Masuk ke settings (klik foto profil -> settings) -> SSH & GPG keys.
+# 6. Masuk ke settings (klik foto profil -> settings) -> SSH & GPG keys.
   - New key SSH
   - Input code SSH dari ssh-keygen EC2
   ```
@@ -67,10 +67,10 @@ ssh-keygen
   cd .ssh
   cat id_rsa.pub
   ```
-7. Push program dari local ke github. Maka github ada secara otomatis EC2 akan git pull dari master
+# 7. Push program dari local ke github. Maka github ada secara otomatis EC2 akan git pull dari master
 - apabila deploy gagal karena EC2 tidak bisa git pull, dapat melakukan git pull manual di EC2
 ```
 =============IN EC2===============
 git clone ...
 ```
-8. Pastikan security group inbound EC2 telah ditambahkan port web app (contoh :80 ipv4 anywhere)
+# 8. Pastikan security group inbound EC2 telah ditambahkan port web app (contoh :80 ipv4 anywhere)
