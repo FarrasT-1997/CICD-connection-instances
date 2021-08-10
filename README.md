@@ -44,12 +44,16 @@ jobs:
 sudo apt-get update
 sudo apt-get install docker.io
 
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
 ssh-keygen
 ```
 5. Pada github, pilih settings (di samping insights) -> secrets. Masukkan HOST, USERNAME, KEY & PORT
   - HOST : IP public EC2
   - USERNAME : ubuntu
-  - KEY : copy key file .pem
+  - KEY : copy key file .pem (tanpa "%")
   - PORT : 22
 
 6. Masuk ke settings (klik foto profil -> settings) -> SSH & GPG keys.
@@ -60,4 +64,9 @@ ssh-keygen
   cd .ssh
   cat id_rsa.pub
   ```
-7. 
+7. Push program dari local ke github. Maka github ada secara otomatis EC2 akan git pull dari master
+- apabila deploy gagal karena EC2 tidak bisa git pull, dapat melakukan git pull manual di EC2
+```
+git clone ...
+```
+8. Pastikan security group inbound EC2 telah ditambahkan port web app (contoh :80 ipv4 anywhere)
