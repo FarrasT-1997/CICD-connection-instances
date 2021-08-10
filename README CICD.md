@@ -8,8 +8,8 @@ CI/CD AWS
 2. Path workflow git pull ke local
 3. Pada direktori .github/workflow buat file .yml lagi
 
-----------CONTOH-----------------
 ```
+===================CONTOH================
 name: Deploy to EC2
 on: [push]
 jobs:
@@ -41,6 +41,8 @@ jobs:
 
 4. Sebelum push ke github, siapkan EC2, install docker, buat keygen EC2
 ```
+=============IN EC2===============
+
 sudo apt-get update
 sudo apt-get install docker.io
 
@@ -60,6 +62,7 @@ ssh-keygen
   - New key SSH
   - Input code SSH dari ssh-keygen EC2
   ```
+  =============IN EC2===============
   ls -a
   cd .ssh
   cat id_rsa.pub
@@ -67,6 +70,7 @@ ssh-keygen
 7. Push program dari local ke github. Maka github ada secara otomatis EC2 akan git pull dari master
 - apabila deploy gagal karena EC2 tidak bisa git pull, dapat melakukan git pull manual di EC2
 ```
+=============IN EC2===============
 git clone ...
 ```
 8. Pastikan security group inbound EC2 telah ditambahkan port web app (contoh :80 ipv4 anywhere)
