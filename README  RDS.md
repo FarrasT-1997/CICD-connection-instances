@@ -75,7 +75,7 @@ NOTE :
 - program dapat dilihat pada repository saya "ec2"
 
 # git push program
- Apabila CI/CD berhasil namun pada pada EC2 web app program tidak ter-update dapat lakukan build program ulang
+ Apabila CI/CD berhasil namun pada pada EC2 web app program tidak ter-update dapat lakukan build program ulang & commit perubahan tersebut
  ```
  sudo apt-get install golang
  go build -o program
